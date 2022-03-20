@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from datetime import datetime
 import psycopg2
-from yaml_data_cfg import sequenz
+
 
 
 
@@ -17,7 +17,7 @@ Bootstrap(app)
 SECRET_KEY = os.urandom(32)
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SECRET_KEY'] = SECRET_KEY
-#app.config['SQLALCHEMY_DATABASE_URI'] = sequenz
+
 
 db = SQLAlchemy(app)
 
