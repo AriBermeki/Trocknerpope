@@ -60,7 +60,7 @@ class Login(FlaskForm):
 
     
 
-
+db.create_all()
 
 
 @app.route('/')
