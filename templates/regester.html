@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{{ wtf.quick_form(form) }}
+
+{% block head %}
+
+<link  href="{{ url_for('static', filename='css/regeseter.css')}}" rel="stylesheet">
+{% endblock %}
+
+
+
+{% block body %}
+{% block content %}
+  <div class="form-wrapper">
+
+    <div class="logo">
+      <img
+        src="{{ url_for('static', filename='dist/img/logo.png') }}"
+        alt="logo"
+      />
+    </div>
+
+    {% for message in get_flashed_messages() %}
+      <div class="alert alert-warning">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert">
+          x
+        </button>
+        {{ message }}
+      </div>
+    {% endfor %}
+
+    <h1>Sign Up</h1>
+
+{% endblock %}
+<form action="/regester" method="post">
+
+
+
+
+    {{ form.hidden_tag() }}
+    {{wtf.form_field(form.vorname)}}
+    {{wtf.form_field(form.nachname)}}
+    {{wtf.form_field(form.email)}}
+    {{wtf.form_field(form.password)}}
+    <input type="submit" name="submit">
+
+    
+
+
+</form>
+
+
+
+
+
+{% endblock %}

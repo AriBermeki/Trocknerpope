@@ -1,0 +1,5 @@
+cfg.yaml
+.env
+venv
+__pycashe__
+database.db
