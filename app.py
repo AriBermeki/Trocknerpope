@@ -6,7 +6,7 @@ from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 import os
 from datetime import datetime
-import psycopg2
+
 
 
 
