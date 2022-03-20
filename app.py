@@ -6,7 +6,7 @@ from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 import os
 from datetime import datetime
-
+from flask_migrate import Migrate
 
 
 
@@ -60,6 +60,7 @@ class Login(FlaskForm):
 
     
 
+migrate = Migrate(app, db)
 db.create_all()
 
 
