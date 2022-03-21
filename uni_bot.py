@@ -17,12 +17,12 @@ def sende_wenn_nachricht_angekommen(update, context):
 
     text = update.message.text
     antworten_darauf = nachricht_erstellen(text)
-    identitat_antworten = identitat_feststellen(text)
-    update.message.reply_text(antworten_darauf, identitat_antworten )
+   
+    update.message.reply_text(antworten_darauf)
 
 
 
-def nachricht_erstellen(input_text):
+def nachricht_erstellen(input_text, input_id):
     if input_text == "/start":
         return f"""\n\n
         Hello , welcome to UNIVERSITYArea!
@@ -42,8 +42,14 @@ Puede encontrar su ID en su backoffice en el tablero de instrumentos.
 "يمكنك العثور على اسم المستخدم الخاص بك في المكتب الخلفي الخاص بك في القائمة الرئيسية.
         """
   
-def identitat_feststellen(input_text):
-    if input_text == "/system":
+
+
+
+
+
+
+
+    if input_id == "/system":
         return f"""\n\n
         Hello , welcome to UNIVERSITYArea!
 To get started, please reply with your registered User ID number.
