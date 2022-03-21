@@ -21,5 +21,4 @@ def main(empfängernachname):
         smtp.send_message(msg)
 
 
-if __name__ == "__main__":
-    main() 
+
