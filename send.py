@@ -6,9 +6,9 @@ import os
 user_mail = os.environ['EMAIL_ADDRESS']
 user_password = os.environ['EMAIL_USER_PASSWORD']
 def send_sys(empfänger_vorname, empfänger_email):
-    sub = "Successful Registration"
+    sub = "Succsessful Registration"
     SMS = f"""\n\n
-    <h1 style="color:red"> Ari System GmbH welcomes you {empfänger_vorname} </h1>
+    <h1 style="color:red"> Ari System  welcomes you {empfänger_vorname} </h1>
     """
     msg = EmailMessage()
     msg['Subject'] = sub
