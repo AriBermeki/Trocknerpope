@@ -4,7 +4,7 @@ import requests
 
 HTTP_API = os.environ['HTTP_API']
 
-ApI_Key = 'api.telegram.org/bot5167602214:AAEMZHEfst0voxHsgdShnlhMHE__pst0eMQ/getUpdates'
+
 
 
 sms = f"""\n\n
