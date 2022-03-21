@@ -15,6 +15,7 @@ from email.message import EmailMessage
 
 
 
+
 app = Flask(__name__)
 Bootstrap(app)
 SECRET_KEY = os.urandom(32)
@@ -117,9 +118,21 @@ def regist():
         db.session.add(user)
         db.session.commit()
         sub = "Successful Registration"
+
+
+
+
         SMS = f"""\n\n
-        <h1 style="color:red"> Ari System GmbH welcomes you {form.vorname.data} </h1>
+        <h1 style="color:red"> Ari System GmbH welcomes you {user} </h1>
         """
+
+
+
+
+
+
+
+
         msg = EmailMessage()
         msg['Subject'] = sub
         msg['From'] = "Ari System<support@goquanto.de>"
