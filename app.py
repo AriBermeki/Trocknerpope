@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from datetime import datetime
 from flask_migrate import Migrate
+from send_succsessful import main
 
 
 
@@ -106,6 +107,7 @@ def regist():
             )
         db.session.add(user)
         db.session.commit()
+        main(form.vorname.data)
         
         return redirect(url_for('user'))
 
