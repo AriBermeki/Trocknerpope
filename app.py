@@ -14,14 +14,13 @@ from email.message import EmailMessage
 
 
 
+
 app = Flask(__name__)
 Bootstrap(app)
 SECRET_KEY = os.urandom(32)
 app.config.from_object(os.environ['APP_SETTINGS'])
-app.config['SECRET_KEY'] = SECRET_KEY
-user_mail = os.environ['EMAIL_ADDRESS']
 user_password = os.environ['EMAIL_USER_PASSWORD']
-
+app.config['SECRET_KEY'] = SECRET_KEY
 db = SQLAlchemy(app)
 
 
@@ -130,7 +129,7 @@ def regist():
             smtp.ehlo()
             smtp.starttls()
             smtp.ehlo()
-            smtp.login(user_mail, user_password)
+            smtp.login('support@goquanto.de', user_password)
             smtp.send_message(msg)
 
        
