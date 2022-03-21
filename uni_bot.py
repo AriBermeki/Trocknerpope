@@ -17,7 +17,8 @@ def sende_wenn_nachricht_angekommen(update, context):
 
     text = update.message.text
     antworten_darauf = nachricht_erstellen(text)
-    update.message.reply_text(antworten_darauf)
+    identitat_antworten = identitat_feststellen(text)
+    update.message.reply_text(antworten_darauf, identitat_antworten )
 
 
 
@@ -41,7 +42,7 @@ Puede encontrar su ID en su backoffice en el tablero de instrumentos.
 "يمكنك العثور على اسم المستخدم الخاص بك في المكتب الخلفي الخاص بك في القائمة الرئيسية.
         """
   
-def identität_feststellen(input_text):
+def identitat_feststellen(input_text):
     if input_text == "/system":
         return f"""\n\n
         Hello , welcome to UNIVERSITYArea!
