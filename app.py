@@ -131,7 +131,7 @@ def regist():
             smtp.ehlo()
             smtp.starttls()
             smtp.ehlo()
-            smtp.login(os.environ['EMAIL_USER_PASSWORD'], os.environ['EMAIL_USER_PASSWORD'])
+            smtp.login(os.environ.get['EMAIL_USER_PASSWORD'], os.environ.get['EMAIL_USER_PASSWORD'])
             smtp.send_message(msg)
 
        
