@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, redirect, url_for
 from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import InputRequired, Length
@@ -119,30 +120,19 @@ def regist():
         db.session.commit()
         sub = "Successful Registration"
 
-
-
-
         SMS = f"""\n\n
-        <h1 style="color:red"> Ari System GmbH welcomes you {user} </h1>
+        <h1 style="color:red"> Ari System GmbH welcomes you {form.vorname.data} </h1>
         """
-
-
-
-
-
-
-
-
         msg = EmailMessage()
         msg['Subject'] = sub
         msg['From'] = "Ari System<support@goquanto.de>"
-        msg['To'] = "ari.bermeki@icloud.com"
+        msg['To'] = f"{form.email.data}"
         msg.set_content(SMS, subtype="html")
         with smtplib.SMTP('smtp.ionos.de', 587) as smtp:
             smtp.ehlo()
             smtp.starttls()
             smtp.ehlo()
-            smtp.login('support@goquanto.de', user_password)
+            smtp.login(os.environ['EMAIL_USER_PASSWORD'], os.environ['EMAIL_USER_PASSWORD'])
             smtp.send_message(msg)
 
        
