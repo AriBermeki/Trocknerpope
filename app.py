@@ -21,7 +21,6 @@ app = Flask(__name__)
 Bootstrap(app)
 SECRET_KEY = os.urandom(32)
 app.config.from_object(os.environ['APP_SETTINGS'])
-user_password = os.environ['EMAIL_USER_PASSWORD']
 app.config['SECRET_KEY'] = SECRET_KEY
 db = SQLAlchemy(app)
 
