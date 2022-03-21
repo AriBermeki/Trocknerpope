@@ -134,7 +134,7 @@ def regist():
             )
         db.session.add(user)
         db.session.commit()
-        main(form.vorname.data)
+       
         
         return redirect(url_for('user'))
 
