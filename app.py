@@ -11,6 +11,8 @@ from flask_migrate import Migrate
 import smtplib 
 from email.message import EmailMessage
 
+from send import send_sys
+
 
 
 
@@ -117,23 +119,7 @@ def regist():
             )
         db.session.add(user)
         db.session.commit()
-        sub = "Successful Registration"
-
-        SMS = f"""\n\n
-        <h1 style="color:red"> Ari System GmbH welcomes you {form.vorname.data} </h1>
-        """
-        msg = EmailMessage()
-        msg['Subject'] = sub
-        msg['From'] = "Ari System<support@goquanto.de>"
-        msg['To'] = f"{form.email.data}"
-        msg.set_content(SMS, subtype="html")
-        with smtplib.SMTP('smtp.ionos.de', 587) as smtp:
-            smtp.ehlo()
-            smtp.starttls()
-            smtp.ehlo()
-            smtp.login(os.environ.get['EMAIL_USER_PASSWORD'], os.environ.get['EMAIL_USER_PASSWORD'])
-            smtp.send_message(msg)
-
+        send_sys(form.vorname.data, form.email.data)
        
         
         return redirect(url_for('user'))
