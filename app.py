@@ -7,7 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from datetime import datetime
 from flask_migrate import Migrate
-from send_succsessful import main
+import smtplib 
+from email.message import EmailMessage
 
 
 
@@ -18,7 +19,8 @@ Bootstrap(app)
 SECRET_KEY = os.urandom(32)
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SECRET_KEY'] = SECRET_KEY
-
+user_mail = os.environ['EMAIL_ADDRESS']
+user_password = os.environ['EMAIL_USER_PASSWORD']
 
 db = SQLAlchemy(app)
 
@@ -59,7 +61,32 @@ class Login(FlaskForm):
     password = PasswordField('Password', validators=[InputRequired(), Length(max=200)])
     submit = SubmitField('Regester')
 
-    
+
+
+
+def send_succsessful():
+    form = Regester()
+    sub = "Successful Registration"
+    SMS = f"""\n\n
+    <h1 style="color:red"> Ari System GmbH welcomes you {form.vorname.data} </h1>
+    """
+    msg = EmailMessage()
+    msg['Subject'] = sub
+    msg['From'] = "Ari System<support@goquanto.de>"
+    msg['To'] = "ari.bermeki@icloud.com"
+    msg.set_content(SMS, subtype="html")
+    with smtplib.SMTP('smtp.ionos.de', 587) as smtp:
+        smtp.ehlo()
+        smtp.starttls()
+        smtp.ehlo()
+        smtp.login(user_mail, user_password)
+        smtp.send_message(msg)
+
+
+
+
+
+
 
 migrate = Migrate(app, db)
 db.create_all()
